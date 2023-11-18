@@ -5,82 +5,190 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form Handler</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
   </head>
-  <body class="bg-black text-white font-sans ">
+  <body class="bg-black text-white  font-sans ">
 
+    
     <!-- Hero Section -->
-    <div class=' h-screen flex justify-center items-center'>
-      <div class='bg-white w-1/2 h-screen flex justify-center items-center'>
-        <p class='text-3xl md:text-6xl text-black font-montserrat'>Your Chance to make it Big.</p>
+    <div class='h-screen flex  justify-center items-center'>
+      <div class='bg-white w-1/2 h-screen flex flex-col justify-center items-center '>
+        <p class='text-3xl md:text-6xl text-black font-montserrat mb-1'>Perform duties, <br> detach from results </p>
       </div>
-      <div class='bg-black w-1/2 h-screen flex justify-center items-center'>
-        <p class='text-3xl md:text-6xl text-white font-montserrat'>Ultra v 1.0</p>
+      
+      <div class='w-1/2 h-screen flex flex-col justify-center items-center'>
+        <p class='text-3xl md:text-6xl text-transparent 
+        bg-clip-text bg-gradient-to-b from-white to-gray-600 font-montserrat italic p-2'>Bhagavad Gita </p>
+        <p class='text-3xl md:text-5xl text-gray-300 font-montserrat italic mt-2'>2.47</p>
       </div>
     </div>
+
+    <!-- Ultra section -->
     
+    <div class='h-screen flex justify-between items-center'>
+      <div class='w-1/2 text-center'>
+        <p class='text-3xl md:text-8xl  font-montserrat text-transparent 
+        bg-clip-text bg-gradient-to-br from-white to-blue-300'>Be Ultra</p>
+      </div>
+      <div class='w-1/2'>
+        <img src="ultra.png" alt="dev" class='w-full h-full'>
+      </div>
+      
+    </div>
     <!-- Form Section -->
 
-    <div class='flex justify-center space-y-24 items-center flex-col h-screen'>
-      <p class='w-4/5 text-3xl md:text-6xl '>Choose your journey <br> for next 2 months</p>
-      <form id="myForm" action="/submit" method="POST" class="p-4 bg-[#1c1c1c] rounded-md  w-4/5">
+    <!-- About section -->
+    
+    <div class='h-screen mt-32 flex justify-center items-center'>
+      <div class='w-3/4 text-center'>
+        <p class='text-xl md:text-5xl  font-montserrat text-transparent 
+        bg-clip-text bg-gradient-to-b from-white to-gray-400'>Embark on a coding journey!  We
+        empower students, foster development skills across diverse tech domains. 
+        Dive into real-world experience</p>
+      </div>
+    </div>
+
+     <!-- Tech Stack section -->
+    
+     <div class='min-h-screen flex justify-center items-center'>
+      <div class='flex flex-col justify-center items-center'>
+      <p class='text-3xl md:text-6xl font-montserrat text-transparent 
+         bg-clip-text bg-gradient-to-r from-white to-gray-400 mb-6'>
+        Ocean of Opportunities
+      </p>
+    
+      <div class='grid grid-cols-4 mt-6 gap-4 '>
+        <div class='flex flex-col border rounded-xl border-gray-500 bg-[#1d1d1d] p-6 
+        transition duration-300 hover:bg-white hover:text-black'>
+          <p class='text-3xl mb-4'>Front End</p>
+          <div class='flex justify-between'>
+            <p>React</p>
+            <p>Angular</p>
+            <p>Vue.js</p> 
+          </div>
+        </div>
+        
+        <div class='flex flex-col border rounded-xl border-gray-500 bg-[#1d1d1d] 
+        p-6 transition duration-300 hover:bg-white hover:text-black'>
+          <p class='text-3xl mb-4'>Full Stack</p>
+          <div class='flex justify-between'>
+          <p>Spring</p>
+          <p>Flask</p>
+          <p>Nextjs</p>
+          <p>Django</p>
+        </div>
+        </div>
+        <div class='flex flex-col border rounded-xl border-gray-500 bg-[#1d1d1d] 
+        p-6 transition duration-300 hover:bg-white hover:text-black'>
+          <p class='text-3xl mb-4'>ML DL</p>
+          <div class='flex justify-between'>
+          <p>Python</p>
+          <p>Tensorflow</p>
+          <p>PyTorch</p>
+          <p>Pandas</p>
+        </div>
+        </div>
+        <div class='flex flex-col border rounded-xl border-gray-500 bg-[#1d1d1d] 
+        p-6 transition duration-300 hover:bg-white hover:text-black'>
+          <p class='text-3xl mb-4'>App Dev</p>
+          <div class='flex justify-between'>
+          <p>Kotlin</p>
+          <p>Java</p>
+          <p>Flutter</p>
+          <p>Swift</p>
+        </div>
+        </div>
+
+      </div>
+      </div>
+    </div>
+    
+
+
+    <!-- Form Section -->
+
+
+
+    <div class='flex justify-center items-center flex-col '>
+      <p class='w-4/5 text-3xl md:text-6xl my-24'>Choose your journey <br> for next 2 months</p>
+      <form id="myForm" action="/submit" method="POST" class="mb-4 px-12 py-8 bg-[#1c1c1c] rounded-md  w-4/5">
         <label for="name" class="text-3xl">Name</label>
         <input type="text" id="name" name="name" required class="w-full p-2 mt-6 mb-4 bg-[#2b2b2b] 
-        text-white rounded-xl  focus:outline-none">
+        text-white rounded-md focus:outline-none">
     
+        
         <label class="text-3xl">Domain</label>
-        <div class="flex mt-6 mb-4 space-x-4">
-          <div class='flex items-center py-1 px-4 border border-gray-200 rounded dark:border-gray-700 '>
-            <input type="radio" id="android" name="domain" value="android" class="mr-1">
-            <label for="android" class=" ">Android</label>
+        <div class="grid grid-cols-2 md:grid-cols-4 mt-4 mb-4 ">
+          <div class='flex justify-between items-center py-1 mx-2 px-4 border border-gray-200 rounded dark:border-gray-700 my-2'>
+            <input type="radio" id="app" name="domain" value="app">
+            <label for="app">App Dev</label>
           </div>
           
-          <div class='flex items-center py-1 px-4 border border-gray-200 rounded dark:border-gray-700'>
-            <input type="radio" id="leetcode" name="domain" value="leetcode" class="mr-1">
-            <label for="leetcode" class="mr-4">LeetCode DSA</label>
+          <div class='flex justify-between items-center py-1 mx-2 px-4 border border-gray-200 rounded dark:border-gray-700 my-2 '>
+            <input type="radio" id="front" name="domain" value="front">
+            <label for="front" class=" ">Front-End</label>
           </div>
 
-          <div class='flex items-center py-1 px-4 border border-gray-200 rounded dark:border-gray-700'>
-            <input type="radio" id="ml" name="domain" value="ml" class="mr-1">
+          <div class='flex justify-between items-center py-1 mx-2 px-4 border border-gray-200 rounded dark:border-gray-700 my-2 '>
+            <input type="radio" id="backend" name="domain" value="backend">
+            <label for="backend">Back-End</label>
+          </div>
+
+          <div class='flex justify-between items-center py-1 mx-2 px-4 border border-gray-200 rounded dark:border-gray-700 my-2 '>
+            <input type="radio" id="full" name="domain" value="full">
+            <label for="full">Full</label>
+          </div>
+
+          <div class='flex justify-between items-center py-1 mx-2 px-4 border border-gray-200 rounded dark:border-gray-700 my-2 '>
+            <input type="radio" id="leetcode" name="domain" value="leetcode">
+            <label for="leetcode">LeetCode DSA</label>
+          </div>
+
+          <div class='flex justify-between items-center py-1 mx-2 px-4 border border-gray-200 rounded dark:border-gray-700 my-2 '>
+            <input type="radio" id="devops" name="domain" value="devops">
+            <label for="devops">DevOps</label>
+          </div>
+
+          <div class='flex justify-between items-center py-1 mx-2 px-4 border border-gray-200 rounded dark:border-gray-700 my-2 '>
+            <input type="radio" id="cloud" name="domain" value="cloud">
+            <label for="cloud">Cloud</label>
+          </div>
+          
+          <div class='flex justify-between items-center py-1 mx-2 px-4 border border-gray-200 rounded dark:border-gray-700 my-2 '>
+            <input type="radio" id="ml" name="domain" value="ml">
             <label for="ml">Machine Learning</label>
           </div>
-          
-          <div class='flex items-center py-1 px-4 border border-gray-200 rounded dark:border-gray-700'>
-          </div>
-          <div class='flex items-center py-1 px-4 border border-gray-200 rounded dark:border-gray-700'></div>
 
+          
         </div>
     
-        <label for="techStack" class="text-sm mt-2">Tech Stack:</label>
-        <select id="techStack" name="techStack" required class="w-full p-2 mt-1 bg-[#2b2b2b] text-white border rounded-md outline-none">
-          <!-- Options will be dynamically populated based on the selected domain -->
+        <label for="techStack" class="text-3xl my-4">Tech Stack</label>
+        <select id="techStack" name="techStack" required class="w-full p-2 my-4 bg-[#2b2b2b] text-white rounded-md outline-none">
+          <!-- JavaScript -->
         </select>
     
-        <button type="button" onclick="submitForm()" class="mt-4 p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300">Submit</button>
+        <button type="button" onclick="submitForm()" class="w-full mt-4 p-2 bg-black hover:bg-white hover:text-black text-white 
+        rounded-md transition duration-300 border">Submit</button>
       </form>
-      
-
-
-
-    <div id="successPage" style="display: none;" class="p-4 mt-6 transition duration-300">
-      <div class="flex items-center justify-center bg-gray-100 rounded-3xl">
-        <div class="rounded-3xl bg-gray-50 p-6">
-          <div class="flex justify-center animate-pulse">
-            <div class="rounded-full bg-green-200 p-6">
-              <div class="flex h-16 w-16 items-center justify-center rounded-full bg-green-500 p-4 p-6 ">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-8 w-8 text-white">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                </svg>
+      <div id="successPage"  class="p-4 mt-6 transition duration-300 hidden">
+        <div class="flex items-center justify-center bg-[#2b2b2b]  rounded-xl">
+          <div class="rounded-3xl p-6">
+            <div class="flex justify-center animate-pulse">
+              <div class="rounded-full bg-green-200 p-6">
+                <div class="flex h-16 w-16 items-center justify-center rounded-full bg-green-500 p-4 ">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-8 w-8 text-white">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                </div>
               </div>
             </div>
+            <div class='flex flex-col items-center justify-center text-center'>
+              <h3 class="my-4  text-3xl font-semibold text-white">Submitted to the Database</h3>
+              <p id="userName" class="w-[230px]  font-normal text-gray-100"></p>
+              <p id="userTechStack" class="w-[230px] font-normal text-gray-100"></p>
+            </div>
           </div>
-          <div class='flex flex-col items-center justify-center text-center'>
-            <h3 class="my-4  text-3xl font-semibold text-gray-700">Submitted to the Database</h3>
-            <p id="userName" class="w-[230px]  font-normal text-gray-600"></p>
-            <p id="userTechStack" class="w-[230px] font-normal text-gray-600"></p>
-          </div>
-        </div>
-    </div>
+      </div>
+    
     </div>
 
     <script>
@@ -90,9 +198,14 @@
       techStackSelect.innerHTML = ''; // Clear existing options
 
       const techStackOptions = {
-        android: ['Kotlin', 'Java', 'React Native'],
-        leetcode: ['Algorithms', 'Data Structures'],
-        ml: ['TensorFlow', 'PyTorch', 'Scikit-Learn'],
+        app: ['Kotlin', 'Java', 'React Native', 'Swift'],
+        front: ['React (JavaScript)', 'HTML/CSS - Tailwind'],
+        backend: ['Node.js', 'Django', 'Spring', 'Go'],
+        full:['NextJs', 'Spring','Flask', 'Django'],
+        cloud: ['AWS (Amazon)', 'Azure (Microsoft)', 'GCP (Google)'],
+        devops: ['Docker', 'Kubernetes', 'Jenkins'],
+        leetcode: ['Algorithms', 'Data Structures', 'System Design'],
+        ml: ['Python', 'R Programming Language'],
       };
 
       techStackOptions[domain].forEach(option => {
@@ -138,3 +251,4 @@
     </script>
   </body>
 </html>
+
