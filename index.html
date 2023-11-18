@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Handler</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+  </head>
+  <body class="bg-black text-white font-sans ">
+
+    <!-- Hero Section -->
+    <div class=' h-screen flex justify-center items-center'>
+      <div class='bg-white w-1/2 h-screen flex justify-center items-center'>
+        <p class='text-3xl md:text-6xl text-black font-montserrat'>Your Chance to make it Big.</p>
+      </div>
+      <div class='bg-black w-1/2 h-screen flex justify-center items-center'>
+        <p class='text-3xl md:text-6xl text-white font-montserrat'>Ultra v 1.0</p>
+      </div>
+    </div>
+    
+    <!-- Form Section -->
+
+    <div class='flex justify-center space-y-24 items-center flex-col h-screen'>
+      <p class='w-4/5 text-3xl md:text-6xl '>Choose your journey <br> for next 2 months</p>
+      <form id="myForm" action="/submit" method="POST" class="p-4 bg-[#1c1c1c] rounded-md  w-4/5">
+        <label for="name" class="text-3xl">Name</label>
+        <input type="text" id="name" name="name" required class="w-full p-2 mt-6 mb-4 bg-[#2b2b2b] 
+        text-white rounded-xl  focus:outline-none">
+    
+        <label class="text-3xl">Domain</label>
+        <div class="flex mt-6 mb-4 space-x-4">
+          <div class='flex items-center py-1 px-4 border border-gray-200 rounded dark:border-gray-700 '>
+            <input type="radio" id="android" name="domain" value="android" class="mr-1">
+            <label for="android" class=" ">Android</label>
+          </div>
+          
+          <div class='flex items-center py-1 px-4 border border-gray-200 rounded dark:border-gray-700'>
+            <input type="radio" id="leetcode" name="domain" value="leetcode" class="mr-1">
+            <label for="leetcode" class="mr-4">LeetCode DSA</label>
+          </div>
+
+          <div class='flex items-center py-1 px-4 border border-gray-200 rounded dark:border-gray-700'>
+            <input type="radio" id="ml" name="domain" value="ml" class="mr-1">
+            <label for="ml">Machine Learning</label>
+          </div>
+          
+          <div class='flex items-center py-1 px-4 border border-gray-200 rounded dark:border-gray-700'>
+          </div>
+          <div class='flex items-center py-1 px-4 border border-gray-200 rounded dark:border-gray-700'></div>
+
+        </div>
+    
+        <label for="techStack" class="text-sm mt-2">Tech Stack:</label>
+        <select id="techStack" name="techStack" required class="w-full p-2 mt-1 bg-[#2b2b2b] text-white border rounded-md outline-none">
+          <!-- Options will be dynamically populated based on the selected domain -->
+        </select>
+    
+        <button type="button" onclick="submitForm()" class="mt-4 p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300">Submit</button>
+      </form>
+      
+
+
+
+    <div id="successPage" style="display: none;" class="p-4 mt-6 transition duration-300">
+      <div class="flex items-center justify-center bg-gray-100 rounded-3xl">
+        <div class="rounded-3xl bg-gray-50 p-6">
+          <div class="flex justify-center animate-pulse">
+            <div class="rounded-full bg-green-200 p-6">
+              <div class="flex h-16 w-16 items-center justify-center rounded-full bg-green-500 p-4 p-6 ">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-8 w-8 text-white">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class='flex flex-col items-center justify-center text-center'>
+            <h3 class="my-4  text-3xl font-semibold text-gray-700">Submitted to the Database</h3>
+            <p id="userName" class="w-[230px]  font-normal text-gray-600"></p>
+            <p id="userTechStack" class="w-[230px] font-normal text-gray-600"></p>
+          </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+      function updateTechStackOptions() {
+      const domain = document.querySelector('input[name="domain"]:checked').value;
+      const techStackSelect = document.getElementById('techStack');
+      techStackSelect.innerHTML = ''; // Clear existing options
+
+      const techStackOptions = {
+        android: ['Kotlin', 'Java', 'React Native'],
+        leetcode: ['Algorithms', 'Data Structures'],
+        ml: ['TensorFlow', 'PyTorch', 'Scikit-Learn'],
+      };
+
+      techStackOptions[domain].forEach(option => {
+        const optionElement = document.createElement('option');
+        optionElement.value = option.toLowerCase();
+        optionElement.textContent = option;
+        techStackSelect.appendChild(optionElement);
+      });
+    }
+
+    // Event listener for radio buttons to update tech stack options
+    const domainRadios = document.querySelectorAll('input[name="domain"]');
+    domainRadios.forEach(radio => {
+      radio.addEventListener('change', updateTechStackOptions);
+    });
+
+      function submitForm() {
+        var form = document.getElementById("myForm");
+        var formData = new FormData(form);
+        console.log('Form Data:', formData);
+
+        fetch('/submit', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Show success page
+                document.getElementById('successPage').style.display = 'block';
+                // Display user data on the success page
+                document.getElementById('userName').innerText = 'Name: ' + data.user.name;
+                document.getElementById('userTechStack').innerText = 'Tech Stack: ' + data.user.techStack;
+            } else {
+                // Handle other scenarios if needed
+                console.error('Form submission failed:', data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+    </script>
+  </body>
+</html>
