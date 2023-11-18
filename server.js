@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 });
 
 // Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 // Handle form submission
 app.post('/submit', upload.none(), (req, res) => {
