@@ -200,7 +200,7 @@
           <!-- JavaScript -->
         </select>
     
-        <button type="button" onclick="submitForm()" class="w-full mt-4 p-2 bg-black hover:bg-white hover:text-black text-white 
+        <button onclick="hello()" class="w-full mt-4 p-2 bg-black hover:bg-white hover:text-black text-white 
         rounded-md transition duration-300 border">Submit</button>
       </form>
       <div id="successPage"  class="p-4 mt-6 transition duration-300 hidden">
@@ -261,26 +261,30 @@
         var formData = new FormData(form);
         console.log('Form Data:', formData);
 
-        fetch('/submit', {
-            method: 'POST',
-            body: formData,
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Show success page
-                document.getElementById('successPage').style.display = 'block';
-                // Display user data on the success page
-                document.getElementById('userName').innerText = 'Name: ' + data.user.name;
-                document.getElementById('userTechStack').innerText = 'Tech Stack: ' + data.user.techStack;
-            } else {
-                // Handle other scenarios if needed
-                console.error('Form submission failed:', data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+        // fetch('/submit', {
+        //     method: 'POST',
+        //     body: formData,
+        //     headers: {
+        //       Accept: 'application/json',
+        //       'Content-Type': 'application/json',
+        //     },
+        // }) 
+        // .then(response => response.json())
+        // .then(data => {
+        //     if (data.success) {
+        //         // Show success page
+        //         document.getElementById('successPage').style.display = 'block';
+        //         // Display user data on the success page
+        //         document.getElementById('userName').innerText = 'Name: ' + data.user.name;
+        //         document.getElementById('userTechStack').innerText = 'Tech Stack: ' + data.user.techStack;
+        //     } else {
+        //         // Handle other scenarios if needed
+        //         console.error('Form submission failed:', data.message);
+        //     }
+        // })
+        // .catch(error => {
+        //     console.error('Error:', error);
+        // });
     }
     </script>
   </body>
