@@ -11,7 +11,7 @@ function Ocean() {
 
         <div className="grid grid-cols-2 items-start sm:grid-cols-4 lg:grid-cols-3 mt-6 gap-4 mx-0 sm:mx-8 md:mx-0">
           <div
-            className="flex flex-col justify-between border rounded-xl border-gray-500 bg-[#1d1d1d] 
+            className="flex flex-col justify -between border rounded-xl border-gray-500 bg-[#1d1d1d] 
       p-6 transition duration-300 hover:bg-white hover:text-black"
           >
             <p className="text-3xl mb-4">Front End</p>

@@ -31,12 +31,13 @@ const MyForm: React.FC = () => {
 
   const updateTechStackOptions = () => {
     const { domain } = formState;
-    const techStackSelect = document.getElementById('techStack') as HTMLSelectElement | null;
+    const techStackSelect = document.getElementById(
+      'techStack'
+    ) as HTMLSelectElement | null;
 
     if (techStackSelect) {
       techStackSelect.innerHTML = '';
 
-      // Check if techStackOptions[domain] is defined
       if (techStackOptions[domain]) {
         techStackOptions[domain].forEach((option) => {
           const optionElement = document.createElement('option');
@@ -48,7 +49,9 @@ const MyForm: React.FC = () => {
     }
   };
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setFormState({
       ...formState,
       [e.target.name]: e.target.value,
@@ -58,29 +61,33 @@ const MyForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formState);
-    // Add your form submission logic here
   };
 
   return (
-    <div className='flex justify-center items-center flex-col'>
-      <p className='w-4/5 text-4xl md:text-7xl my-24'>Choose your journey for the next 2 months</p>
-      <form onSubmit={handleSubmit} className='mb-4 px-12 py-8 bg-[#1c1c1c] rounded-md w-4/5'>
-        {/* Other form elements */}
-        <label htmlFor='name' className='text-3xl'>
+    <div className="flex justify-center items-center flex-col">
+      <p className="w-4/5 text-4xl md:text-7xl my-24">
+        Choose your journey for the next 2 months
+      </p>
+      <form
+        onSubmit={handleSubmit}
+        className="mb-4 px-12 py-8 bg-[#1c1c1c] rounded-md w-4/5"
+      >
+        {/* form elements */}
+        <label htmlFor="name" className="text-3xl">
           Name
         </label>
         <input
-          type='text'
-          id='name'
-          name='name'
+          type="text"
+          id="name"
+          name="name"
           required
           value={formState.name}
           onChange={handleChange}
-          className='w-full p-2 mt-6 mb-4 bg-[#2b2b2b] text-white rounded-md focus:outline-none'
+          className="w-full p-2 mt-6 mb-4 bg-[#2b2b2b] text-white rounded-md focus:outline-none"
         />
 
-        <label className='text-3xl'>Domain</label>
-        <div className='grid grid-cols- md:grid-cols-4 mt-4 mb-4'>
+        <label className="text-3xl">Domain</label>
+        <div className="grid grid-cols- md:grid-cols-4 mt-4 mb-4">
           {Object.keys(techStackOptions).map((domain) => (
             <div
               key={domain}
@@ -89,9 +96,9 @@ const MyForm: React.FC = () => {
               }`}
             >
               <input
-                type='radio'
+                type="radio"
                 id={domain}
-                name='domain'
+                name="domain"
                 value={domain}
                 checked={formState.domain === domain}
                 onChange={handleChange}
@@ -101,25 +108,25 @@ const MyForm: React.FC = () => {
           ))}
         </div>
 
-        {/* Tech Stack dropdown */}
-        <label htmlFor='techStack' className='text-3xl my-4'>
+        {/* dropdown */}
+        <label htmlFor="techStack" className="text-3xl my-4">
           Tech Stack
         </label>
         <select
-          id='techStack'
-          name='techStack'
+          id="techStack"
+          name="techStack"
           required
           value={formState.techStack}
           onChange={handleChange}
-          className='w-full p-2 my-4 bg-[#2b2b2b] text-white rounded-md outline-none'
+          className="w-full p-2 my-4 bg-[#2b2b2b] text-white rounded-md outline-none"
         >
-          {/* Options will be dynamically added */}
+          {/* dynamic*/}
         </select>
 
         {/* Submit button */}
         <button
-          type='submit'
-          className='w-full mt-4 p-2 bg-black hover:bg-white hover:text-black text-white rounded-md transition duration-300 border'
+          type="submit"
+          className="w-full mt-4 p-2 bg-black hover:bg-white hover:text-black text-white rounded-md transition duration-300 border"
         >
           Submit
         </button>
