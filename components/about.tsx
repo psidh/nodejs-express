@@ -1,9 +1,10 @@
 import React from 'react';
+import Line from './line';
 
 function about() {
   return (
     <div>
-      <div className="h-screen flex justify-center items-center">
+      <div className="h-screen flex justify-center items-center ">
         <div className="w-3/4 text-center">
           <p
             className="text-2xl md:text-5xl  font-montserrat text-transparent 
@@ -13,10 +14,6 @@ function about() {
             skills across diverse tech domains. Dive into real-world experience
           </p>
         </div>
-      </div>
-
-      <div className="flex items-center justify-center">
-        <hr className="border border-gray-500 w-11/12" />
       </div>
     </div>
   );
